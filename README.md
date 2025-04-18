@@ -1,1 +1,1 @@
-# bedrock-knowledge-base-with-rds-and-s3
+## Bedrock Knowledge Base with RDS and S3
