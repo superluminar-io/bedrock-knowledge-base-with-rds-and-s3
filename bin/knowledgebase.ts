@@ -6,6 +6,7 @@ import { Agent } from '../lib/stacks/Agent';
 import { AgentKnowledgebase } from '../lib/stacks/AgentKnowledgebase';
 import { Persistence } from '../lib/stacks/Persistence';
 import * as bedrock from 'aws-cdk-lib/aws-bedrock';
+import { AgentKnowledgebaseTest } from '../lib/stacks/AgentKnowledgebaseTest';
 
 const app = new cdk.App();
 
@@ -39,12 +40,18 @@ const agentStack = new Agent(app, 'knowledgebase-example-agent', {
 })
 
 // Agent Knowledgebase + documents
-new AgentKnowledgebase(app, 'knowledgebase-example-agent-knowledgebase', {
+const agentKnowledgebase = new AgentKnowledgebase(app, 'knowledgebase-example-agent-knowledgebase', {
     embeddingModel: bedrock.FoundationModelIdentifier.AMAZON_TITAN_EMBEDDINGS_G1_TEXT_V1,
     agent: agentStack.agent,
     agentRole: agentStack.agentRole,
     cluster: persistenceStack.cluster,
     contentPath: './documents',
     enableLogging: true,
+    ...defaultStackProperties
+})
+
+// Agent Knowledgebase testing lambda
+new AgentKnowledgebaseTest(app, 'knowledgebase-example-agent-knowledgebase-test', {
+    agentAlias: agentKnowledgebase.agentAlias,
     ...defaultStackProperties
 })

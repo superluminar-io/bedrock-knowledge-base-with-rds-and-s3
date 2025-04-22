@@ -45,6 +45,7 @@ export class Agent extends cdk.Stack {
             assumedBy: new iam.ServicePrincipal('bedrock.amazonaws.com'),
         })
 
+        // todo: narrow for prod usage
         agentRole.addToPolicy(new iam.PolicyStatement({
             effect: iam.Effect.ALLOW,
             actions: [
@@ -53,6 +54,7 @@ export class Agent extends cdk.Stack {
             resources: ['*'],
         }))
 
+        // todo: narrow for prod usage
         agentRole.addToPolicy(new iam.PolicyStatement({
             effect: iam.Effect.ALLOW,
             actions: [
@@ -71,6 +73,7 @@ export class Agent extends cdk.Stack {
             resources: ['*'],
         }))
 
+        // todo: narrow for prod usage
         agentRole.addToPolicy(new iam.PolicyStatement({
             effect: iam.Effect.ALLOW,
             actions: [

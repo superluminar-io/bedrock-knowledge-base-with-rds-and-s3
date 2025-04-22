@@ -36,8 +36,8 @@ export const handler = async function () {
                             content  text,
                             embedding vector(${VECTOR_SIZE})
                         );`);
-    await client.query('CREATE INDEX IF NOT EXISTS ON documents USING gin (to_tsvector(\'simple\', content));');
-    await client.query('CREATE INDEX IF NOT EXISTS ON documents USING hnsw (embedding vector_cosine_ops);');
+    await client.query('CREATE INDEX ON documents USING gin (to_tsvector(\'simple\', content));');
+    await client.query('CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops);');
 
     await client.end();
 }
