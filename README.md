@@ -3,7 +3,9 @@
 
 In this repository we will learn how to build a Knowledge Base with AWS.
 
-(LINK)
+Here you can find more about this repository.
+
+https://superluminar.io/2025/04/22/a-practical-guide-of-how-to-build-a-knowledge-base-with-rds-and-documents-from-s3/
 
 ## How to deploy:
 
